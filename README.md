@@ -71,10 +71,16 @@ Sentence Transformers.
 * Data cleaning (as in Step 1)
 * Corpuses were passed to text-to-embedding model by using OpenAI API
 * The dataset with vectors was formed by performing Cross-Join to achieve N^2 size (more information for our student model)
-* Tuning was implemented in PyTorch using Contrastive Loss
+* Cosine similarity was calculated
+* Fine-tuning process was implemented in PyTorch using Contrastive Loss.
+>  <img src="https://github.com/gblssroman/MSU-ML-Talent-Match/blob/main/img/contrastive-loss.png" alt=">Contrastive Loss Formula">
+> <br>Contrastive Loss Formula (tau stands for temperature).
 
+Metrics comparison here...
+
+**You can find each of two model weights in our repo by according name.**
 
 
 ## 3. Best result
-...
+Best model...
 
