@@ -6,22 +6,22 @@ Make a high-quality matching & ranking of applicants' resumes to the specific va
 Up to 94% time savings for HR specialists.
 
 # Our team:
-* [Roman Prasad](https://github.com/gblssroman)
-* [Solomon Chakaev](https://github.com/veidlink)
-* [Nikita Chuikin](https://github.com/AnalyseOptimize)
-* [Vladislav Taskaev](https://github.com/vladik-pwnz)
+* [Roman Prasad](https://github.com/gblssroman), FA
+* [Solomon Chakaev](https://github.com/veidlink), HSE
+* [Nikita Chuikin](https://github.com/AnalyseOptimize), HSE
+* [Vladislav Taskaev](https://github.com/vladik-pwnz), MADI
 
 # Data:
 We were given two JSON-files (you can find them in our repo):
 
 * **First** containing pairs Resume-[N candidates] with the label ```"failed_resumes"```/```"confirmed_resumes"```
-* **Second** containing pairs Resume-[N candidates] without labels
+* **Second** containing pairs Resume-[N candidates] without labels.
 
 # Our approach
 ## 1. EDA
 * JSON -> CSV Parsing
 * Data cleaning (RegExp & N/A processing)
-* Removing non-valuable features by checking their distributions according to the acceptance in train
+* Removing non-valuable features by checking their distributions according to the acceptance in train.
 
 Columns, which correlate the most with the target, contain text data:
 
@@ -37,7 +37,6 @@ Text preprocessing methods, such as lemmatization, were used but are not impleme
 
 Data preprocessing is fully automated in our Streamlit App (JSON-only files are supported).
 
-
 ## 2. Models
 ### CatBoost & Clusterization
 ...
@@ -46,8 +45,7 @@ Data preprocessing is fully automated in our Streamlit App (JSON-only files are 
 ...
 
 ### Fine-tuning BERT & roBERTa-XLM
-...
+> Sentence Transformers Illustraion
 
 ## 3. Best result
 ...
-
