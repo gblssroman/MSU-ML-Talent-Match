@@ -74,7 +74,7 @@ Sentence Transformers.
 * Cosine similarity was calculated
 * Fine-tuning process was implemented in PyTorch using Contrastive Loss.
 >  <img src="https://github.com/gblssroman/MSU-ML-Talent-Match/blob/main/img/contrastive-loss.png" alt=">Contrastive Loss Formula">
-> <br>Contrastive Loss Formula (tau stands for temperature).
+> <br>Contrastive Loss Formula.
 
 Metrics comparison here...
 
