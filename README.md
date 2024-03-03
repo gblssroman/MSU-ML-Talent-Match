@@ -38,14 +38,43 @@ Text preprocessing methods, such as lemmatization, were used but are not impleme
 Data preprocessing is fully automated in our Streamlit App (JSON-only files are supported).
 
 ## 2. Models
-### CatBoost & Clusterization
+## CatBoost & Clusterization
 ...
 
-### AutoML
+## AutoML
 ...
 
-### Fine-tuning BERT & roBERTa-XLM
-> Sentence Transformers Illustraion
+## Fine-tuning BERT & XLM-roBERTa
+>  <img src="https://github.com/gblssroman/MSU-ML-Talent-Match/blob/main/img/sentence-transformers-or-siamese.png" alt="Base Mechanism of Sentence Transformers for this task">
+> <br>Basic Sentence Transformers illustration for our task.
+
+The mechanism is simple: 
+
+**Two texts are passed in transformers, being pooled in the end -> Getting vectors of the same shape -> Calculating cosine (or other) similarity between them
+-> Prediction with threshold -> Ranking.**
+
+```cointegrated/rubert-tiny2``` (Russian BERT) and ```paraphrase-multilingual-mpnet-base-v2``` (Multilingual XLM-roBERTa) were chosen as competitors after a comparison between other available
+pre-trained models feasible for our matching.
+
+We can combine all the valuable features, forming the united corpus of text. However, it turned out that splitting text wisely can give us more accuracy in results. 
+It is connected to the finity of small BERT-like transformers attention.
+Two corpuses for each candidate can be formed:
+* One including ```'Key Skills', 'Position'```
+* Second containing whole text.
+
+There were no full satisfaction with quality, so we decided to do fine-tuning by generating embeddings for vacancies and resumes using OpenAI's text-to-embedding model as a teacher for our
+Sentence Transformers.
+
+### Fine-Tuning steps:
+* Datasets used: [HH.ru Vacancies](https://www.kaggle.com/datasets/etietopabraham/jobs-raw-data), [HH.ru Resumes](https://www.kaggle.com/datasets/sameelie/resume-hh)
+* IT-connected jobs & vacancies were extracted from datasets
+* Data cleaning (as in Step 1)
+* Corpuses were passed to text-to-embedding model by using OpenAI API
+* The dataset with vectors was formed by performing Cross-Join to achieve N^2 size (more information for our student model)
+* Tuning was implemented in PyTorch using Contrastive Loss
+
+
 
 ## 3. Best result
 ...
+
