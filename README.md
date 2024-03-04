@@ -39,6 +39,17 @@ Data preprocessing is fully automated in our Streamlit App (JSON-only files are 
 
 ## 2. Models
 ## CatBoost & Clusterization
+
+Known vacancies can be clustered and a separate classifier can be made for the center of each cluster, whether the vacancy is suitable. At the entrance, this classifier provides similarity between job descriptions and resumes, job titles and resume descriptions, etc. Since there are only 29 vacancies in our data, it makes sense to train a classifier for each of them without additional clustering: you will need it when displaying the solution in production.
+
+When a new vacancy arrives, its similarities with the vacancies we know are considered, and suitable classifiers are found. For each resume, we use trained classifiers of the k nearest neighbors of the new vacancy. The answers are averaged inversely proportional to the distance to these objects. We consider a resume suitable if its score > a given threshold.
+
+At the same time, candidates can be ranked by score in order to give out the most relevant ones first.
+
+
+<a href="https://ibb.co/S0Mfd22"><img src="https://i.ibb.co/pZMhRgg/01-03-2024-08-31-16.png" alt="01-03-2024-08-31-16" border="0"></a>
+
+<a href="https://ibb.co/G3N2DFN"><img src="https://i.ibb.co/Vp5SG35/01-03-2024-08-31-30.png" alt="01-03-2024-08-31-30" border="0"></a>
 ...
 
 ## AutoML
